@@ -1,0 +1,20 @@
+.lf-ar-h { font-size: .62em; font-weight: 600; color: var(--text-3); margin-inline-start: 10px; letter-spacing: 0; }
+.lf-ar-p { margin-top: 6px; color: var(--text-2); font-size: 16px; text-align: left; }
+.lf-sub, .seg [lang="ar"] { color: var(--text-3); font-weight: 500; }
+.lf-sub2 { opacity: .75; font-weight: 500; }
+.lf-grid { align-items: start; }
+.lf-box { min-height: 220px; max-height: 480px; overflow: auto; }
+textarea.lf-box, .lf-out { font-family: var(--font); font-size: 19px; line-height: 1.85; }
+.lf-out { white-space: pre-wrap; unicode-bidi: plaintext; text-align: start; }
+.lf-out:empty::before { content: "The fixed text appears here · النص المصحّح يظهر هنا"; color: var(--text-3); font-size: 15px; }
+.lf-note { margin: 4px 0 12px; }
+.lf-kb { display: grid; gap: 6px; min-width: 620px; }
+.lf-row { display: flex; gap: 6px; }
+.lf-r1 { padding-left: 22px; } .lf-r2 { padding-left: 34px; } .lf-r3 { padding-left: 50px; }
+.lf-key { flex: 0 0 42px; height: 46px; border-radius: 9px; background: var(--surface-2); border: 1px solid var(--line);
+  display: flex; flex-direction: column; justify-content: space-between; padding: 4px 6px; }
+.lf-key b { font-family: var(--mono); font-size: 12px; color: var(--text-3); font-weight: 600; text-align: left; line-height: 1; }
+.lf-key span { font-size: 18px; line-height: 1; text-align: right; color: var(--accent); }
+.lf-key.same span { color: var(--text-3); font-size: 14px; }
+.lf-key.wide span { font-size: 16px; }
+@media (max-width: 560px) { textarea.lf-box, .lf-out { font-size: 17px; } .lf-box { min-height: 170px; } }

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Layout Fixer — Fix Arabic Typed in English Keyboard (hgsghl → السلام) | S3eidat Tools</title>
+<meta name="description" content="Typed with the wrong keyboard language? Turn 'hgsghl ugd;l' into 'السلام عليكم' and 'اثممخ' back into 'hello'. Arabic (101) and US QWERTY layouts, shift layer and lam-alef. Free, private, runs in your browser.">
+<meta property="og:title" content="Layout Fixer — مصحح لغة لوحة المفاتيح">
+<meta property="og:description" content="Fix text typed in the wrong keyboard layout, Arabic ⇄ English. Runs 100% in your browser.">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+<!--s3:seo-->
+<link rel="canonical" href="https://s3eidat.github.io/layout-fixer/">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0d0f12">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="S3eidat Tools">
+<meta property="og:url" content="https://s3eidat.github.io/layout-fixer/">
+<meta property="og:image" content="https://s3eidat.github.io/layout-fixer/screenshot.png">
+<meta property="og:image:width" content="1280"><meta property="og:image:height" content="800">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Layout Fixer — Fix text typed in the wrong keyboard layout">
+<meta name="twitter:description" content="Fix text typed in the wrong keyboard layout. Free, private and runs 100% in your browser: no sign-up, no uploads.">
+<meta name="twitter:image" content="https://s3eidat.github.io/layout-fixer/screenshot.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Layout Fixer", "url": "https://s3eidat.github.io/layout-fixer/", "description": "Fix text typed in the wrong keyboard layout. Free, private and runs 100% in your browser: no sign-up, no uploads.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "image": "https://s3eidat.github.io/layout-fixer/screenshot.png", "author": {"@type": "Person", "name": "s3eidat", "url": "https://github.com/s3eidat"}}</script>
+<!--/s3:seo-->
+</head>
+<body data-tool="layout-fixer">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>Layout Fixer <span class="lf-ar-h" lang="ar" dir="rtl">مصحح لغة لوحة المفاتيح</span></h1>
+    <p>Forgot to switch the keyboard language? Paste the gibberish and get what you meant: <span class="mono" dir="ltr">hgsghl ugd;l</span> becomes <bdi lang="ar">السلام عليكم</bdi>, and <bdi lang="ar">اثممخ</bdi> becomes <span class="mono">hello</span>.</p>
+    <p class="lf-ar-p" lang="ar" dir="rtl">نسيت تغيّر اللغة وأنت تكتب؟ الصق النص هنا وخذه كما قصدته، بالعربي أو بالإنجليزي.</p>
+  </section>
+
+  <section class="card">
+    <div class="row between">
+      <div class="seg" id="dir" role="group" aria-label="Direction">
+        <button aria-pressed="true" data-v="auto">Auto <span lang="ar">· تلقائي</span></button>
+        <button aria-pressed="false" data-v="ar">To Arabic <span lang="ar">· إلى العربية</span></button>
+        <button aria-pressed="false" data-v="en">To English <span lang="ar">· إلى الإنجليزية</span></button>
+      </div>
+      <label class="check"><input type="checkbox" id="caps"> <span>Treat capitals as lowercase <bdi lang="ar" class="lf-sub">تجاهل الأحرف الكبيرة</bdi></span></label>
+    </div>
+  </section>
+
+  <div class="grid-2 lf-grid mt">
+    <section class="card">
+      <div class="row between">
+        <h2>Typed text <small lang="ar">النص المكتوب</small></h2>
+        <div class="row">
+          <button class="btn ghost small" id="paste">Paste <span lang="ar" class="lf-sub">لصق</span></button>
+          <button class="btn ghost small" id="sample">Sample <span lang="ar" class="lf-sub">مثال</span></button>
+          <button class="btn ghost small" id="clear" aria-label="Clear"><svg class="i"><use href="#i-trash"/></svg></button>
+        </div>
+      </div>
+      <label for="input" class="sr">Text typed with the wrong keyboard layout</label>
+      <textarea class="textarea prose lf-box mt" id="input" dir="auto" spellcheck="false" autocomplete="off" placeholder="hgsghl ugd;l  ·  اثممخ"></textarea>
+      <div class="row mt">
+        <span id="status" class="chip">Waiting for text <span lang="ar">· بانتظار النص</span></span>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row between">
+        <h2>What you meant <small lang="ar">ما قصدته</small></h2>
+        <div class="row">
+          <button class="btn small" id="use" title="Use the result as the new input">Use as input</button>
+          <button class="btn small primary" id="copy"><svg class="i"><use href="#i-copy"/></svg>Copy <span lang="ar" class="lf-sub2">نسخ</span></button>
+        </div>
+      </div>
+      <div class="out lf-box lf-out mt" id="out" tabindex="0" dir="auto" aria-live="polite"></div>
+      <div class="stats mt" id="stats"></div>
+    </section>
+  </div>
+
+  <section class="card mt">
+    <div class="row between">
+      <h2>Key map <small lang="ar">خريطة المفاتيح</small></h2>
+      <div class="seg" id="layer" role="group" aria-label="Keyboard layer">
+        <button aria-pressed="true" data-v="base">Normal <span lang="ar">· عادي</span></button>
+        <button aria-pressed="false" data-v="shift">Shift</button>
+      </div>
+    </div>
+    <p class="faint lf-note">US QWERTY key (left) and what the standard Arabic (101) layout types on it (right). Lam-alef <bdi lang="ar">لا</bdi> is one key: <kbd>B</kbd>.</p>
+    <div class="tbl-wrap"><div class="lf-kb" id="kb" dir="ltr"></div></div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
